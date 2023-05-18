@@ -1,5 +1,5 @@
-CREATE DATABASE users_app;
-USE users_app;
+-- CREATE DATABASE blogsweb_users_app;
+-- USE blogsweb_users_app;
 
 CREATE TABLE users (
     id integer PRIMARY KEY AUTO_INCREMENT,
