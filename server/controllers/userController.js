@@ -137,28 +137,28 @@ exports.update = function(req, res){
     }
   
 //Delete user   
-exports.delete = function(req, res){
-    pool.getConnection((err, connection) => {
-        if (err) throw err; // not connected
-        console.log('Mysql Connected as ID:' + connection.threadId);
+// exports.delete = function(req, res){
+//     pool.getConnection((err, connection) => {
+//         if (err) throw err; // not connected
+//         console.log('Mysql Connected as ID:' + connection.threadId);
 
-        connection.query('DELETE FROM users WHERE id = ?',[req.params.id], (err, rows) =>{
-            connection.release() // return the connection to pool
-            if (!err) {
-                let removedUser = encodeURIComponent('User successfully removed.');
-                res.redirect('/?removed=' + removedUser);
-                // res.redirect('/');
-            }else {
-                console.log(err);
-            }
-            console.log('The data from users table: \n', rows);
-        });
-    });
-}
+//         connection.query('DELETE FROM users WHERE id = ?',[req.params.id], (err, rows) =>{
+//             connection.release() // return the connection to pool
+//             if (!err) {
+//                 let removedUser = encodeURIComponent('User successfully removed.');
+//                 res.redirect('/?removed=' + removedUser);
+//                 // res.redirect('/');
+//             }else {
+//                 console.log(err);
+//             }
+//             console.log('The data from users table: \n', rows);
+//         });
+//     });
+// }
 
 //     pool.getConnection((err, connection) => {
 //         if (err) throw err;
-//         connection.query('DELETE FROM users WHERE id = ?',[req.params.id], (err, rows) => {
+//         connection.query("DELETE FROM users WHERE id = ?",[req.params.id], (err, rows) => {
 //             connection.release();
 //             if(!err) {
 //                 let removedUser = encodeURIComponent('User successfully removed.');
@@ -179,7 +179,7 @@ exports.viewall = (req, res) => {
         console.log('Mysql Connected as ID:' + connection.threadId);
     
         // User connection //
-        connection.query('SELECT * FROM users WHERE id = ?',[req.params.id], (err, rows) => {
+        connection.query("SELECT * FROM users WHERE id = ?",[req.params.id], (err, rows) => {
             // when done with the connection, release it //
             connection.release();
             if(!err) {
